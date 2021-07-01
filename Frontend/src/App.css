@@ -1,0 +1,61 @@
+body {
+  background-image: url(https://d31dn7nfpuwjnm.cloudfront.net/images/valoraciones/0040/7448/Es_posible_conseguir_un_pr%C3%A9stamo_sin_sustentar_ingresos.jpg?1605303435);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #0f0f0f;
+}
+
+.icon {
+  background: #f51371;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50%;
+  padding: 15px !important;
+  color: #fff;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.padd-top-5 {
+  padding-top: 5%;
+}
+
+.padd-top-10 {
+  padding-top: 10%;
+}
+
+.padd-bot-10 {
+  padding-bottom: 10%;
+}
+
+.padd-bot-5 {
+  padding-bottom: 5%;
+}
+
+.padd-bot-3 {
+  padding-bottom: 3%;
+}
+
+.card {
+  border-radius: 1rem !important;
+}
+
+.badge-color {
+  background-color: rgba(255, 0, 0, 0.2) !important;
+  color: rgba(255, 0, 0, 0.4) !important;
+}
+
+.errors {
+  color: rgb(255, 0, 0);
+}
+
+.values {
+  color: rgb(13, 175, 113);
+}

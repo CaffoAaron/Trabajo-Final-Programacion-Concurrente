@@ -405,17 +405,18 @@ func realizarKnn(res http.ResponseWriter, req *http.Request) {
 	var respuesta = Respuesta{}
 	temp := "1"
 	//body, _ := ioutil.ReadAll(req.Body)
-	casado := req.FormValue("casado")
-	hijos := req.FormValue("hijos")
-	carrera_universitaria := req.FormValue("carrera_universitaria")
-	casa_propia := req.FormValue("casa_propia")
-	otro_prestamo := req.FormValue("otro_prestamo")
 
 	mas_de_4_Años_como_empresa := req.FormValue("mas_de_4_Años_como_empresa")
 	mas_de_1_Local := req.FormValue("mas_de_1_Local")
 	mas_de_10_Empleados := req.FormValue("mas_de_10_Empleados")
 	Pago_de_Igv_Ultimos_6_Meses := req.FormValue("Pago_de_Igv_Ultimos_6_Meses")
 	declaron_confidencial_patrimonio := req.FormValue("declaron_confidencial_patrimonio")
+
+	casado := req.FormValue("casado")
+	hijos := req.FormValue("hijos")
+	carrera_universitaria := req.FormValue("carrera_universitaria")
+	casa_propia := req.FormValue("casa_propia")
+	otro_prestamo := req.FormValue("otro_prestamo")
 
 	if casado == "No" {
 		temp = temp + "0"

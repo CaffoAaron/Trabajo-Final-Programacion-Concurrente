@@ -289,7 +289,42 @@ func calculaDistanciaAsincrono(chDistancia chan float64, chY chan int, chEstado 
 	chEstado <- p.Estado
 }
 
-
+func knn(usuario *ConsultaBono) bool {
+	var knnNodes = [100]knnNode{}
+	chDistancia := make(chan float64)
+	chY := make(chan int)
+	chX := make(chan int)
+	chEstado := make(chan string)
+	for i := 0; i < 100; i++ {
+		go calculaDistanciaAsincrono(chDistancia, chY, chEstado, chX, usuario.PuntajeEmpresa, usuario.PuntajePersonal, Dataset[i])
+		knnNodes[i].Distancia = <-chDistancia
+		knnNodes[i].y = <-chY
+		knnNodes[i].x = <-chX
+		knnNodes[i].estado = <-chEstado
+	}
+	log.Println(knnNodes)
+	for i := 1; i < 100; i++ {
+		for j := 0; j < 100-i; j++ {
+			if knnNodes[j].Distancia > knnNodes[j+1].Distancia {
+				knnNodes[j], knnNodes[j+1] = knnNodes[j+1], knnNodes[j]
+			}
+		}
+	}
+	log.Println(knnNodes)
+	count := 0
+	for i := 0; i < 6; i++ {
+		if knnNodes[i].estado == "Pre-Aprobado" {
+			count++
+		}
+	}
+	if count >= 3 {
+		log.Println("Usted esta preaprobado para el bono independiente")
+		return true
+	} else {
+		log.Println("Usted no esta apto para el bono independiente")
+		return false
+	}
+}
 
 func LeerDataSetFromGit() {
 	response, err := http.Get("https://raw.githubusercontent.com/CaffoAaron/DataSet-Programaci-n-Concurrente-y-Distribuida/master/bono_Independiente_trabajaperu.csv") //use package "net/http"
